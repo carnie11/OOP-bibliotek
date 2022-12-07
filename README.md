@@ -16,6 +16,8 @@ Tex: “Stifltelsetrilogin är en bok skriven av Isac Asimov och är 634 sidor l
 
 Samt en metod för att låna och lämna tillbaks en specifik bok.
 
+
+
 Till biblioteks-klassen så skall ni förutom en lista på böcker, adress och kontaktuppgifter skapa minst två metoder, en som skriver ut en kontaktsträng. 
 
 Och en som skriver ut hur många böcker som finns på biblioteket, och hur många som är utlånade.
