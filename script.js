@@ -1,8 +1,8 @@
 let bokhylla = document.getElementById("bokhylla");
 let lana = document.getElementById("lana");
-let lämnaTillbaka = document.getElementById("lämnaTillbaka");
+let lamnaTillbaka = document.getElementById("lamnaTillbaka");
 let lanaBtn = document.getElementById("lanaBtn");
-let lämnaBtn = document.getElementById("lämnaBtn");
+let lamnaBtn = document.getElementById("lamnaBtn");
 
 
 
@@ -21,13 +21,16 @@ class Book {
 
 
     returnBook() {  //= LÄMNA TILLBAKA
+        this.avaliable = "tillgänglig";
+        this.printBookInfo();
+        printAllBooks();
 
     }
 
     printBookInfo() { 
         let bookInfo = this.title + " är en bok skriven av " +  this.author + " och är " + this.pages + " sidor lång. Boken är just nu " + this.avaliable + ".";
        
-        bokhylla.insertAdjacentHTML("afterbegin", "<li>" + bookInfo +  "<input type= 'checkbox'></input></li>" );
+        bokhylla.insertAdjacentHTML("afterbegin", "<li>" + bookInfo +  "</li>" );
         
     }
 
@@ -69,19 +72,36 @@ function printAllBooks() {
 lanaBtn.addEventListener("click", function() { //= LÅNA
     for (let i = 0; i < GreatLibrary.books.length; i++) {
         if (lana.value ==  GreatLibrary.books[i].title) {
-            console.log("Du har lånat " +lana.value + ".");
+            alert("Du har lånat " +lana.value + ".");
             GreatLibrary.books[i].borrowBook();
             console.log(GreatLibrary.books[i]);
-
+            lana.value = "";
             break;
 
-        } else {
-            console.log("Vi har inte titeln i biblan");
+        } 
+        // else {
+        //     console.log("Vi har inte titeln i biblan");
+        //     break;
+        // }
+    }   
+    lana.reset();
+});
+
+lamnaBtn.addEventListener("click", function() { //= LÅNA
+    for (let i = 0; i < GreatLibrary.books.length; i++) {
+        if (lamnaTillbaka.value ==  GreatLibrary.books[i].title) {
+            alert("Du har lämnat tillbaka " +lamnaTillbaka.value + ".");
+            GreatLibrary.books[i].returnBook();
+            console.log(GreatLibrary.books[i]);
+            lamnaTillbaka.value = "";
             break;
-        }
-        
-    }
-    
+
+        } 
+        // else {
+        //     console.log("Vi har inte titeln i biblan");
+        //     break;
+        // }
+    }   
 });
 
 let GreatLibrary = new Bibla ("GreatLibrary");
