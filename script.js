@@ -53,10 +53,19 @@ class Bibla {
 
     addBook(newBook){
         this.books.push(newBook);
-       
-        
     }
-}
+
+    bookCount() {
+        for (let i= 0; i< GreatLibrary.books.length; i++) {
+            let currentlyUnavaliable = 0;
+            if ( GreatLibrary.books[i].avaliable == "utlånad") {
+            currentlyUnavaliable =+ 1;
+            console.log("currently unavailable" +currentlyUnavaliable);
+            }
+        
+        console.log("Vårt bibliotek har " + GreatLibrary.books.length +" böcker. Just nu är " + currentlyUnavaliable +" utlånade.");
+     }
+}};
 
 
 
@@ -84,7 +93,7 @@ lanaBtn.addEventListener("click", function() { //= LÅNA
         //     break;
         // }
     }   
-    lana.reset();
+    
 });
 
 lamnaBtn.addEventListener("click", function() { //= LÅNA
@@ -113,3 +122,4 @@ GreatLibrary.addBook(Manifestet);
 
 
 printAllBooks();
+GreatLibrary.bookCount();
